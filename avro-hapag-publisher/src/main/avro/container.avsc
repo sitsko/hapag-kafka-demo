@@ -1,0 +1,19 @@
+{
+  "namespace": "me.sitsko.avro",
+  "type": "record",
+  "name": "Container",
+  "fields": [
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string"
+    },
+        {
+          "name": "info",
+          "type": "string"
+        }
+  ]
+}
