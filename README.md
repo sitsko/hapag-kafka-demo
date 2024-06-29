@@ -7,7 +7,7 @@ This repository contains three variants of the same system:
 
 The system is composed of two applications:
 
-1. A producer writing _Container_ into the `containers` Kafka topic.
+1. A producer writing _Container_ into the `containers`  Kafka topic.
 2. A consumer consuming these _Container_ .
 
 ## Building
