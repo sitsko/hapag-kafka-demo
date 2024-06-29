@@ -64,6 +64,21 @@ public class AvroConsumer {
 		var containersInfo = containers.stream()
 				.map(Container::toString)
 				.collect(Collectors.joining(","));
-		log.info("received container {} as PAYLOADs: {}", containers.size(), containersInfo);
+		log.info("received containers: {}, {}", containers.size(), containersInfo);
+	}
+
+	@Incoming("container-event")
+	@RunOnVirtualThread
+	public void messageEvent(List<ContainerRepositionEvent> events) {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+
+		var eventInfo = events.stream()
+				.map(ContainerRepositionEvent::toString)
+				.collect(Collectors.joining(","));
+		log.info("received event(s): {}, {}", events.size(), eventInfo);
 	}
 }

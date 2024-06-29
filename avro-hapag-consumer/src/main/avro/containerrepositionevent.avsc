@@ -1,0 +1,11 @@
+{
+  "namespace": "me.sitsko.avro",
+  "type": "record",
+  "name": "ContainerRepositionEvent",
+  "fields": [
+	{
+	  "name": "id",
+	  "type": "int"
+	}
+  ]
+}
