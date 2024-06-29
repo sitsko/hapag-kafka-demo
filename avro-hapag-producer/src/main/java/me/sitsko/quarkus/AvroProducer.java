@@ -16,18 +16,18 @@ public class AvroProducer {
 	private final AtomicInteger counter = new AtomicInteger(0);
 
 	@Channel("containers")
-	Emitter<Container> emitter;
+	Emitter<Container> emitter;  //CDI should be package-private
 
-
-	@Scheduled(every = "3s", delayed = "5s")
+	@Scheduled(every = "1s", delayed = "5s")
 	public void publishContainer() {
-		final var random = new Random();
+		var random = new Random();
 		var container = Container.builder()
 				.id(String.valueOf(counter.incrementAndGet()))
 				.type(ContainerType.values()[random.nextInt(4)].toString())
 				.info(LocalDateTime.now().toString())
 				.build();
-		emitter.send(container);
+		emitter.send(container); // send async
 		log.info("send container: {}", container);
 	}
 }
+

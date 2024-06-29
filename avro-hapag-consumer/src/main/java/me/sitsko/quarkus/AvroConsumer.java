@@ -1,16 +1,11 @@
 package me.sitsko.quarkus;
 
 import io.smallrye.common.annotation.RunOnVirtualThread;
-import io.smallrye.reactive.messaging.kafka.api.IncomingKafkaRecordMetadata;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
-import org.eclipse.microprofile.reactive.messaging.Message;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
 
@@ -58,10 +53,17 @@ public class AvroConsumer {
 	//Case 2. Batch mode
 	// Option 2.a Kafka consumer record
 	@Incoming("containers")
+	@RunOnVirtualThread
 	public void message(List<Container> containers) {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+
 		var containersInfo = containers.stream()
 				.map(Container::toString)
 				.collect(Collectors.joining(","));
-		log.info("received container as PAYLOADs: {}", containersInfo);
+		log.info("received container {} as PAYLOADs: {}", containers.size(), containersInfo);
 	}
 }
