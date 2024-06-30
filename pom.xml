@@ -11,8 +11,8 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>avro-hapag-producer</module>
-		<module>avro-hapag-consumer</module>
+		<module>kafka-producer</module>
+		<module>kafka-consumer</module>
 		<module>liquibase-demo</module>
 	</modules>
 
