@@ -1,0 +1,42 @@
+version: "3.8"
+name: hapag-sitsko
+
+services:
+
+  #application
+  hapag-liquibase-demo:
+    depends_on:
+      - hapag-postgres
+    container_name: hapag-liquibase-demo-container
+    build:
+      context: ../../../
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    image: "hapag-liquibase-demo-image:1.0"
+    networks:
+      - backend-network
+    ports:
+      - "9090:9090"
+      - "5005:5005"
+    environment:
+      JAVA_DEBUG: "true"
+      JAVA_DEBUG_PORT: "*:5005"
+      QUARKUS_LAUNCH_DEVMODE: "true"
+
+#database
+  hapag-postgres:
+    container_name: hapag-postgres-db
+    image: postgres:16.1
+    networks:
+      - backend-network
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+    ports:
+      - "54597:5432"
+    env_file: ../../../.env
+
+volumes:
+  pgdata:
+
+networks:
+  backend-network:
+    driver: bridge

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+	<changeSet author="Mikalai Sitsko" id="action-status">
+		<loadData file="data/action_status.csv"
+				  quotchar="'"
+				  relativeToChangelogFile="true"
+				  separator=";"
+				  tableName="TE0791_ACTION_STATUS"
+				  usePreparedStatements="true">
+			<column name="id"/>
+			<column name="status"/>
+		</loadData>
+	</changeSet>
+</databaseChangeLog>

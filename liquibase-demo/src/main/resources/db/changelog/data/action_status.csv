@@ -1,0 +1,5 @@
+id;status
+1;INIT
+2;PREPARE
+3;PLANNING
+4;FINISHED
