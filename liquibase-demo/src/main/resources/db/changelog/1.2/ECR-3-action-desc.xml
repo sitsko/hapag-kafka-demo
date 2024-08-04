@@ -4,13 +4,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
-
-<!-- include revision -->
-        <include file="/db/changelog/changelog-1.0.xml"/>
-        <include file="/db/changelog/changelog-1.1.xml"/>
-<!--        <include file="/db/changelog/changelog-1.2.xml"/>-->
-
-<!--        load data from csv files -->
-        <include file="/db/changelog/changelog-data.xml"/>
+    <changeSet  author="Mikalai Sitsko"  id="1.2-ECR-3">
+        <comment>Add action description</comment>
+        <addColumn tableName="TE0791_ACTION_STATUS">
+            <column  name="description"  type="VARCHAR2(50)" >
+            </column>
+        </addColumn>
+    </changeSet>
 
 </databaseChangeLog>

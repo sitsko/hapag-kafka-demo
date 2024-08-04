@@ -4,19 +4,19 @@ name: hapag-sitsko
 services:
 
   #application
-  hapag-liquibase-demo:
+  hapag-liquibase:
     depends_on:
       - hapag-postgres
-    container_name: hapag-liquibase-demo-container
+    container_name: hapag-liquibase
     build:
       context: ../../../
       dockerfile: ./src/main/docker/Dockerfile.jvm
-    image: "hapag-liquibase-demo-image:1.0"
+    image: "hapag-liquibase-image:1.0"
     networks:
       - backend-network
     ports:
-      - "9090:9090"
-      - "5005:5005"
+      - "8585:8585" #app port
+      - "5005:5005" #debug port
     environment:
       JAVA_DEBUG: "true"
       JAVA_DEBUG_PORT: "*:5005"
