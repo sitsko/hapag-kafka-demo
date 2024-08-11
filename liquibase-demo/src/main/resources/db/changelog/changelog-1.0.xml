@@ -5,8 +5,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
 
-    <include file="db/changelog/1.0/01-action-plan.xml"/>
-    <include file="db/changelog/1.0/02-action-changes.xml"/>
+    <include file="db/changelog/1.0/ECR-1-initial.xml"/>
 
+    <changeSet id="release-1.0" author="Mikalai Sitsko">
+        <tagDatabase tag="1.0"/>
+    </changeSet>
 
 </databaseChangeLog>

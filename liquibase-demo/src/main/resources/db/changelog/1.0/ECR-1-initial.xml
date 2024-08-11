@@ -16,4 +16,13 @@
         </createTable>
     </changeSet>
 
+    <changeSet  author="Mikalai Sitsko"  id="1.0-02">
+        <createTable tableName="TE0790_ACTION_CHANGES">
+            <column  name="id"  type="BIGINT">
+                <constraints  nullable="false"  primaryKey="true"  unique="true"/>
+            </column>
+            <column  name="action_name"  type="VARCHAR(255)" />
+            <column  name="user"  type="VARCHAR(255)" />
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
