@@ -7,12 +7,13 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
 @ApplicationScoped
+@Path("/api/v1/")
 public class LiquibaseResource {
 
-	@Path("/liquibase")
+	@Path("liquibase")
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	public String hello() {
+	public String databaseVersion() {
 		return "Liquibase demo";
 	}
 }
